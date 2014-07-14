@@ -210,7 +210,10 @@ def apply_metadata(album_info, mapping):
             item.tracktotal = len(album_info.tracks)
 
         # Disc and disc count.
-        item.disc = track_info.medium
+        if track_info.medium > 1:
+            item.disc = track_info.medium
+        else:
+            item.disc = None
         item.disctotal = album_info.mediums
 
         # MusicBrainz IDs.
